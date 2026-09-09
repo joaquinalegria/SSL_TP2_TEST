@@ -1,6 +1,6 @@
-# Tabla de Transición - Escáner de Calculadora
+# Tabla de Transición
 
-| Estado / Carácter | Letra | Dígito | Punto | `+` | `-` | `*` | `/` | `^` | `=` | Espacio | `\n` | FDT | Otro |
+| Estado| Letra | Dígito | Punto | + | - | * | / | ^ | = | Espacio | \n | FDT | Otro |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | **0** | 1 | 2 | 3 | 5 | 6 | 7 | 8 | 110 | 111 | 0 | 113 | 112 | 200 |
 | **1** | 1 | 1 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 | 100 |
