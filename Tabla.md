@@ -53,7 +53,7 @@ Rango [100 - 199]. El autómata interrumpe la lectura y clasifica el lexema.
 *   **110 (TOKEN_POTENCIA):** Operador `^` reconocido.
 *   **111 (TOKEN_IGUAL):** Operador `=` reconocido.
 *   **112 (TOKEN_FDT):** Fin de Texto reconocido.
-*   **113 (TOKEN_NL):** Nueva línea reconocida. Indica al parser el final de la expresión matemática.
+*   **113 (TOKEN_NL):** Nueva línea reconocida. Indica el final de la expresión matemática.
 
 ### Estados de Error
 Rango [200 - 299]. Detienen el ciclo y terminan el análisis del token actual.

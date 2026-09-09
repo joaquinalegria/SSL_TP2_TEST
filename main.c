@@ -54,7 +54,10 @@ int main() {
                 printf("Error lexico\t\t| Lexema: %s\n", obtener_lexema());
                 break;
             case TOKEN_FDT:
-                printf("Token: Fin de Texto (FDT) reconocido. Terminando...\n");
+                printf("Token: Fin de Texto (FDT) reconocido. \n");
+                break;
+            case TOKEN_NL:
+                printf("Token: Nueva Linea (\\n)\n");
                 break;
             default:
                 printf("Estado desconocido (%d)\n", token_actual);

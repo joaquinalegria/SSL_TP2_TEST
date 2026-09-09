@@ -18,6 +18,7 @@ typedef enum {
     TOKEN_POTENCIA = 110,
     TOKEN_IGUAL = 111,
     TOKEN_FDT = 112,
+    TOKEN_NL = 113,
     TOKEN_ERROR_LEXICO = 200
 } Token;
 

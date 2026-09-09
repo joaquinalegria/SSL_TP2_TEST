@@ -9,16 +9,16 @@ static char buffer_lexema[256];
 // Tabla de transición optimizada por clases de caracteres.
 // Filas: Estados (0 al 8)
 // Columnas: Letra(0), Dígito(1), Punto(2), +(3), -(4), *(5), /(6), ^(7), =(8), Espacio(9), FDT(10), Otro(11)
-static const int tabla_transicion[9][12] = {
-    {1,   2,   3, 5,   6,   7,   8, 110, 111,   0, 112, 200}, // Estado 0
-    {1,   1, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100}, // Estado 1 (ID)
-    {101, 2,   4, 101, 101, 101, 101, 101, 101, 101, 101, 101}, // Estado 2 (Const entera)
-    {200, 4, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200}, // Estado 3 (Punto inicial)
-    {101, 4, 200, 101, 101, 101, 101, 101, 101, 101, 101, 101}, // Estado 4 (Const decimal)
-    {102, 102, 102, 102, 102, 102, 102, 102, 103, 102, 102, 102}, // Estado 5 (+)
-    {104, 104, 104, 104, 104, 104, 104, 104, 105, 104, 104, 104}, // Estado 6 (-)
-    {106, 106, 106, 106, 106, 106, 106, 106, 107, 106, 106, 106}, // Estado 7 (*)
-    {108, 108, 108, 108, 108, 108, 108, 108, 109, 108, 108, 108}  // Estado 8 (/)
+static const int tabla_transicion[9][13] = {
+    {  1,   2,   3,  5,  6,  7,  8, 110, 111,  0, 113, 112, 200}, // Estado 0
+    {  1,   1, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100}, // Estado 1 (ID)
+    {101,   2,   4, 101, 101, 101, 101, 101, 101, 101, 101, 101, 101}, // Estado 2 (Int)
+    {200,   4, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200}, // Estado 3 (Punto)
+    {101,   4, 200, 101, 101, 101, 101, 101, 101, 101, 101, 101, 101}, // Estado 4 (Float)
+    {102, 102, 102, 102, 102, 102, 102, 102, 103, 102, 102, 102, 102}, // Estado 5 (+)
+    {104, 104, 104, 104, 104, 104, 104, 104, 105, 104, 104, 104, 104}, // Estado 6 (-)
+    {106, 106, 106, 106, 106, 106, 106, 106, 107, 106, 106, 106, 106}, // Estado 7 (*)
+    {108, 108, 108, 108, 108, 108, 108, 108, 109, 108, 108, 108, 108}  // Estado 8 (/)
 };
 
 // No entiendo que es lo de buffer_lexema
@@ -35,9 +35,10 @@ static int obtener_columna(int c) {
     if (c == '/') return 6;
     if (c == '^') return 7;
     if (c == '=') return 8;
-    if (isspace(c)) return 9;
-    if (c == EOF) return 10;
-    return 11; // Otro carácter (error léxico)
+    if (c == ' ' || c == '\t' || c == '\r') return 9; 
+    if (c == '\n') return 10;                         
+    if (c == EOF) return 11;                          
+    return 12;                                        
 }
 
 // Determina si el estado aceptor requiere devolver el carácter espurio al flujo
